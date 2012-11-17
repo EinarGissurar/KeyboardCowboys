@@ -15,9 +15,24 @@
         <fileset dir="${lib.dir}" includes="**/*.jar"/>
     </path>
 
+    <path id="emma.lib" >
+        <pathelement location="${lib.dir}/emma.jar" />
+        <pathelement location="${lib.dir}/emma_ant.jar" />
+    </path>
+
+    <taskdef resource="emma_ant.properties" classpathref="emma.lib" />
+
     <!-- Clean build -->
     <target name="clean">
         <delete dir="${build.dir}"/>
+        <delete dir="${coverage.dir}"/>
+    </target>
+
+    <target name="init" >
+        <mkdir dir="${classes.dir}" />
+        <path id="run.classpath" >
+            <pathelement location="${classes.dir}" />
+        </path>
     </target>
 
     <!-- Compile code and tests -->
@@ -37,6 +52,11 @@
         </jar>
     </target>
 
+
+    <target name="emma" description="turns on EMMA's on-the-fly instrumentation mode" >
+        <property name="emma.enabled" value="true" />
+    </target>
+
     <!-- Run tests -->
     <target name="test" depends="jar">
         <junit printsummary="yes">
@@ -51,8 +71,17 @@
     </target>
 
     <!-- Run executable -->
-    <target name="run" depends="jar">
+    <target name="run" depends="init,emma,jar">
         <java jar="${jar.dir}/${ant.project.name}.jar" fork="true"/>
+        <emmajava enabled="${emma.enabled}" libclasspathref="emma.lib"
+                  fullmetadata="yes" sourcepath="${src.dir}"
+                  classname="main.TicTacToe"
+                  classpathref="run.classpath"
+                >
+            <txt outfile="${coverage.dir}/coverage.txt" />
+            <xml outfile="${coverage.dir}/coverage.xml" />
+            <html outfile="${coverage.dir}/coverage.html"  />
+        </emmajava>
     </target>
 
     <!-- Run complete build process-->
