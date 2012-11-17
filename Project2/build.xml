@@ -4,6 +4,7 @@
     <property name="src.dir"     value="src"/>
     <property name="test.dir"    value="test"/>
     <property name="build.dir"   value="build"/>
+    <property name="coverage.dir" value="coverage"/>
     <property name="classes.dir" value="${build.dir}/classes"/>
     <property name="jar.dir"     value="${build.dir}/jar"/>
     <property name="main-class"  value="main.TicTacToe"/>
@@ -37,7 +38,7 @@
     </target>
 
     <!-- Run tests -->
-    <target name="junit" depends="jar">
+    <target name="test" depends="jar">
         <junit printsummary="yes">
             <classpath>
                 <path refid="classpath"/>
@@ -55,6 +56,6 @@
     </target>
 
     <!-- Run complete build process-->
-    <target name="main" depends="clean,compile,jar,junit,run"/>
+    <target name="main" depends="clean,compile,jar,test,run"/>
 
 </project>
