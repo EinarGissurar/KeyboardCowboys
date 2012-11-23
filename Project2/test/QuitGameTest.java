@@ -12,6 +12,14 @@ public class QuitGameTest extends TestCase
 
         game.QuitGame();
 
-        assertEquals(true, game.isQuitGame());
+        Assert.assertEquals(true, game.isQuitGame());
+
+    }
+    public void testIsQuitGame()
+    {
+        game.quitGame = false;
+        Assert.assertEquals(false, game.isQuitGame());
+        game.quitGame = true;
+        Assert.assertEquals(true, game.isQuitGame());
     }
 }

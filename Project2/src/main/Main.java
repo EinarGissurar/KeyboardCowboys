@@ -14,6 +14,7 @@ public class Main
             System.out.println("1. Play a game of TicTacToe");
             System.out.println("2. TicTacToe rulebook");
             System.out.println("3. Quit");
+            game.QuitGame();
         }
 
         System.out.println("Have a nice day!");
