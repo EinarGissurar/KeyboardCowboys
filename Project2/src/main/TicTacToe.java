@@ -54,4 +54,20 @@ public class TicTacToe
             System.out.println("");
         }
     }
+
+    public void printWinner(int winner)
+    {
+        if(winner==0){
+            System.out.println("DRAW!");
+        }
+        else if(winner==1){
+            System.out.println("Player 1 wins!");
+        }
+        else if(winner==2){
+            System.out.println("Player 2 wins!");
+        }
+        else
+            System.out.println("something went terribly wrong..");
+
+    }
 }
