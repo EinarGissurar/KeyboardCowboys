@@ -38,7 +38,4 @@ public class PrintTableTest extends TestCase
         System.setOut(originalOut);
 
     }
-
-
-
 }
