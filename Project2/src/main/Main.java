@@ -52,6 +52,6 @@ public class Main
             }
         }
 
-        System.out.println("\nHave a nice day!");
-    }
+        System.out.println("Have a nice day!");
+	}
 }
