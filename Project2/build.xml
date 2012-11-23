@@ -73,6 +73,11 @@
     <!-- Run executable -->
     <target name="run" depends="init,emma,jar">
         <java jar="${jar.dir}/${ant.project.name}.jar" fork="true"/>
+
+    </target>
+
+    <!-- Run Emma code coverage -->
+    <target name="emma_codecoverage" depends="init,emma,jar">
         <emmajava enabled="${emma.enabled}" libclasspathref="emma.lib"
                   fullmetadata="yes" sourcepath="${src.dir}"
                   classname="main.TicTacToe"
@@ -84,7 +89,8 @@
         </emmajava>
     </target>
 
+
     <!-- Run complete build process-->
-    <target name="main" depends="clean,compile,jar,test,run"/>
+    <target name="main" depends="clean,compile,jar,test,run,emma_codecoverage"/>
 
 </project>

@@ -2,9 +2,21 @@ package main;
 
 public class TicTacToe
 {
-	public static void main(String[] args)
-	{
-		System.out.println("main.TicTacToe");
+    public boolean quitGame = false;
 
-	}
+    public TicTacToe()
+    {
+        this.quitGame = false;
+    }
+
+    public boolean isQuitGame()
+    {
+        return quitGame;
+    }
+
+    public void QuitGame()
+    {
+        this.quitGame = true;
+    }
+
 }
