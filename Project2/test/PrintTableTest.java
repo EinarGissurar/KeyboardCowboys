@@ -2,6 +2,11 @@ import junit.framework.Assert;
 import junit.framework.TestCase;
 import main.TicTacToe;
 
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
+import java.io.ByteArrayInputStream;
+import java.io.PrintStream;
+
 /**
  * Created with IntelliJ IDEA.
  * User: fannar
@@ -11,21 +16,29 @@ import main.TicTacToe;
  */
 public class PrintTableTest extends TestCase
 {
-    TicTacToe game = new TicTacToe();
-    PrintTableTest print = new PrintTableTest();
+    TicTacToe capture;
 
-    public void tPrintTable()
+    protected void setUp() throws Exception
     {
-        //Testing initial table
-        System.out.println("123");
-        System.out.println("456");
-        System.out.println("789");
+        super.setUp();
+        capture = new TicTacToe();
+    }
+
+    public final void testPrintTableTest()
+    {
+        PrintStream originalOut = System.out;
+        OutputStream os = new ByteArrayOutputStream();
+        PrintStream ps = new PrintStream(os);
+        System.setOut(ps);
+
+        String separator = System.getProperty("line.separator");
+        capture.printTable();
+        assertEquals("123\n456\n789"+separator, os.toString());
+
+        System.setOut(originalOut);
 
     }
 
-    public void testPrintTable()
-    {
-        Assert.assertEquals(game.printTable(), print.tPrintTable());
-    }
+
 
 }
