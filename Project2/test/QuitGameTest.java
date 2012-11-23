@@ -6,12 +6,21 @@ public class QuitGameTest extends TestCase
 {
     TicTacToe game = new TicTacToe();
 
-    public void testQuitOutcome()
+    public void testIsQuitGame()
+    {
+        game.quitGame = false;
+        Assert.assertEquals(false, game.isQuitGame());
+
+        game.quitGame = true;
+        Assert.assertEquals(true, game.isQuitGame());
+    }
+
+    public void testQuitGame()
     {
         Assert.assertEquals(false, game.isQuitGame());
 
         game.QuitGame();
 
-        assertEquals(true, game.isQuitGame());
+        Assert.assertEquals(true, game.isQuitGame());
     }
 }

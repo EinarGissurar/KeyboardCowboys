@@ -1,4 +1,6 @@
 package main;
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
 public class TicTacToe
 {
@@ -19,4 +21,15 @@ public class TicTacToe
         this.quitGame = true;
     }
 
+    public int GetUserInput()
+    {
+        try
+        {
+            return new Scanner(System.in).nextInt();
+        }
+        catch (InputMismatchException ex)
+        {
+            return -1;
+        }
+    }
 }
