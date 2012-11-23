@@ -1,0 +1,11 @@
+logs
+tmp
+.history
+/.idea
+/*.iml
+/build
+/coverage
+/.idea_modules
+/.classpath
+/.project
+/RUNNING_PID
