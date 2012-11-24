@@ -13,9 +13,9 @@ public class MarkTest extends TestCase
         game.arr[1][2] = 'X';   //Field 6
         game.arr[0][0] = 'X';   //Field 1
 
-        Assert.assertEquals('O',game.GetMark(9));
-        Assert.assertEquals('O',game.GetMark(5));
-        Assert.assertEquals('X',game.GetMark(6));
-        Assert.assertEquals('X',game.GetMark(1));
+        Assert.assertEquals('O',game.getMark(9));
+        Assert.assertEquals('O',game.getMark(5));
+        Assert.assertEquals('X',game.getMark(6));
+        Assert.assertEquals('X',game.getMark(1));
     }
 }

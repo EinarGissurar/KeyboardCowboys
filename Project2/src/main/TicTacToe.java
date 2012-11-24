@@ -51,9 +51,9 @@ public class TicTacToe {
 
         //We use modulus to map from field to matrix and check if it has already been marked
 
-        if (field > 6)
-            if (arr[2][(field - 1) % 3] == cfield)
-                arr[2][(field - 1) % 3] = symbol;
+        if(field>6)
+            if(arr[2][(field-1) % 3]==cfield)
+                arr[2][(field-1) % 3]=symbol;
             else
                 return -1;
         else if (field > 3)
@@ -67,15 +67,17 @@ public class TicTacToe {
             return -1;
         return 1;
     }
+    public void switchPlayer(){                 //Might have to switch because both start as TRUE
 
-    public void switchPlayer() {                 //Might have to switch because both start as TRUE
-
-        if (player1) {
-            player2 = true;
-            player1 = false;
-        } else {
-            player1 = true;
-            player2 = false;
+        if(player1)
+        {
+            player2=true;
+            player1=false;
+        }
+        else
+        {
+            player1=true;
+            player2=false;
         }
     }
 
