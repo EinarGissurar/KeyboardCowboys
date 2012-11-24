@@ -2,6 +2,9 @@
 import junit.framework.Assert;
 import junit.framework.TestCase;
 import main.TicTacToe;
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
 
 public class SetMarkTest extends TestCase {
     TicTacToe game = new TicTacToe();
@@ -19,6 +22,18 @@ public class SetMarkTest extends TestCase {
 
         game.newBoard();
         game.printTable();
+    }
+
+    public void testAllowedSymbol()
+    {
+        PrintStream originalOut = System.out;
+        OutputStream os = new ByteArrayOutputStream();
+        PrintStream ps = new PrintStream(os);
+        System.setOut(ps);
+        String separator = System.getProperty("line.separator");
+        game.setMark(1,'P');
+        assertEquals("This symbol is not allowed" +separator, os.toString());
+        System.setOut(originalOut);
     }
 
 }
