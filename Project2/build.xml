@@ -1,4 +1,4 @@
-<project name="main.Main" basedir="." default="main">
+<project name="main.Main" basedir="." default="build">
 
     <!-- Build variables -->
     <property name="src.dir"        value="src"/> <!-- Source directory -->
