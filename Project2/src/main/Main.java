@@ -2,12 +2,18 @@ package main;
 
 public class Main
 {
+
     public static void main(String[] args)
     {
         TicTacToe game = new TicTacToe();
         game.checkWinner();
 
         System.out.println("Welcome to TicTacToe!\n");
+
+        game.setMark(5,'X');
+        game.newBoard();
+
+
 
         while (!game.isQuitGame())
         {
@@ -55,4 +61,7 @@ public class Main
 
         System.out.println("Have a nice day!");
 	}
+
+
+
 }
