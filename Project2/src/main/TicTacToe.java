@@ -215,7 +215,7 @@ public class TicTacToe {
             if (player1)
                 System.out.println("Player 1, it's your turn. (X)");
             else
-                System.out.println("Player 2, it's your turn.  (0)");
+                System.out.println("Player 2, it's your turn. (0)");
 
             //Get user input
             boolean validInput = false;
