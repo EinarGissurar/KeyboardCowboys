@@ -83,7 +83,7 @@ public class TicTacToe
         //Check for 3-in-a-row vertical and horizontal
         for (int i=0;i<3;i++)
         {
-        if (arr[i][i]=='X')      //We check the intersecting field [0][0], [1][1], [2]{2]
+        if (arr[i][i]=='X')      //We check the intersecting field [0][0], [1][1], [2][2]
             winner = 1;
         else
             winner = 2;
@@ -124,13 +124,11 @@ public class TicTacToe
         }
         if(draw)
         {
-            System.out.println("It's draw hurreYY!, let's play again");
             return 0;
         }
 
-
-        System.out.println("The title TicTacToe-Champion is still up for grabs");
-        return -1;  //If the game is not over yet
+        //The game is not over yet
+        return -1;
     }
 
 
@@ -211,4 +209,44 @@ public class TicTacToe
             System.out.println("something went terribly wrong..");
 
     }
+
+    public void playGame()
+    {
+        int winner = -1;
+
+        newBoard();
+
+        while (winner == -1)
+        {
+            System.out.println();
+            printTable();
+
+            System.out.println();
+
+            //Get user input
+            boolean validInput = false;
+            int userInput = -1;
+            while (!validInput)
+            {
+                userInput = GetUserInput();
+                if (userInput == -1 || userInput < 1 || userInput > 9)
+                    System.out.println("Please select a number between 1 and 9");
+                else
+                    validInput = true;
+            }
+
+            setMark(userInput,'X');
+            winner = checkWinner();
+        }
+
+        //Game has ended
+        //winner = 0 if draw
+        //winner = 1 if player 1 won
+        //winner = 2 if player 2 won
+
+        System.out.println();
+        printWinner(winner);
+    }
 }
+
+

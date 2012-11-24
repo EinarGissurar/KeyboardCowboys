@@ -5,13 +5,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
 
-/**
- * Created with IntelliJ IDEA.
- * User: fannar
- * Date: 11/23/12
- * Time: 22:10
- * To change this template use File | Settings | File Templates.
- */
 public class PrintWinnerTest extends TestCase
 {
     TicTacToe capture;
