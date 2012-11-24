@@ -3,7 +3,6 @@ import junit.framework.Assert;
 import junit.framework.TestCase;
 import main.TicTacToe;
 
-
 public class SetMarkTest extends TestCase {
     TicTacToe game = new TicTacToe();
     public void testSetMark()
@@ -23,7 +22,6 @@ public class SetMarkTest extends TestCase {
         game.newBoard();
         game.printBoard();
     }
-
 
 
 }
