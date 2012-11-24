@@ -1,4 +1,5 @@
 package main;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -45,10 +46,8 @@ public class TicTacToe
             return;
         }
 
-
-
         char cfield;
-        cfield = Character.forDigit(field,10);      //We want to compare it to field value to see if it's already marked
+        cfield = Character.forDigit(field,10);   //We want to compare it to field value to see if it's already marked
 
 
         //We use modulus to map from field to matrix and check if it has already been marked
@@ -72,11 +71,19 @@ public class TicTacToe
     }
     public int checkWinner()
     {
+        //Returns:
+        //1 :  If player 1 won
+        //2 : If player 2 won
+        //0 : If it's a draw
+        //-1 : If no winner yet, game still playing
+
+
+        boolean draw=true;
         int winner;
         //Check for 3-in-a-row vertical and horizontal
         for (int i=0;i<3;i++)
         {
-        if (arr[i][i]=='X')               //We check the intersecting field [0][0], [1][1], [2]{2]
+        if (arr[i][i]=='X')      //We check the intersecting field [0][0], [1][1], [2]{2]
             winner = 1;
         else
             winner = 2;
@@ -106,7 +113,24 @@ public class TicTacToe
              else
             return 2;
         }
-        return 0;  //We return 0 if no winner
+        for (int i=0;i<3;i++)
+        {
+            for (int j=0;j<3;j++)
+            {
+                if(Character.isDigit(arr[i][j]))
+                    draw=false;
+
+            }
+        }
+        if(draw)
+        {
+            System.out.println("It's draw hurreYY!, let's play again");
+            return 0;
+        }
+
+
+        System.out.println("The title TicTacToe-Champion is still up for grabs");
+        return -1;  //If the game is not over yet
     }
 
 

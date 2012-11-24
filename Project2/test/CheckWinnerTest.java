@@ -1,10 +1,4 @@
-/**
- * Created with IntelliJ IDEA.
- * User: Lenvoo
- * Date: 23.11.2012
- * Time: 21:19
- * To change this template use File | Settings | File Templates.
- */
+
 
 import junit.framework.Assert;
 import junit.framework.TestCase;
@@ -23,7 +17,11 @@ public class CheckWinnerTest extends TestCase {
 
         Assert.assertEquals(1,game.checkWinner());
 
+        game.printTable();
+
         game.newBoard();
+
+        game.printTable();
 
         game.setMark(1,'O');
         game.setMark(5,'O');
@@ -34,6 +32,44 @@ public class CheckWinnerTest extends TestCase {
         game.setMark(2,'X');
         game.setMark(5,'X');
         game.setMark(8,'X');
+
+        game.newBoard();
+
+        game.setMark(1,'X');
+        game.setMark(2,'O');
+        game.setMark(3,'X');
+
+        game.setMark(4,'O');
+        game.setMark(5,'X');
+        game.setMark(6,'O');
+
+        game.setMark(7,'X');
+        game.setMark(8,'X');
+        game.setMark(9,'O');
+
+        game.printTable();
+
+        game.checkWinner();
+        Assert.assertEquals(1,game.checkWinner());
+
+        game.newBoard();
+
+        game.setMark(1,'X');
+        game.setMark(2,'O');
+        game.setMark(3,'X');
+
+        game.setMark(4,'O');
+        game.setMark(5,'X');
+        game.setMark(6,'O');
+
+        game.setMark(7,'O');
+        game.setMark(8,'X');
+        game.setMark(9,'O');
+
+        game.checkWinner();
+        game.printTable();
+
+
 
 
     }
