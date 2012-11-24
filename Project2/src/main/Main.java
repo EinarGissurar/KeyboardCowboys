@@ -10,7 +10,7 @@ public class Main
 
         System.out.println("Welcome to TicTacToe!\n");
 
-        game.setMark(5,'X');
+        game.setMark(5);
         game.newBoard();
 
 
