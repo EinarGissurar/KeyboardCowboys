@@ -32,9 +32,11 @@ public class TicTacToe {
         }
     }
 
-    public void setMark(int field) {
+    public int setMark(int field) {
+        //returns 1 if successfully marked field
+        //returns -1 if the field is already marked
 
-        //X and O are the only characters allowed
+        //Player 1 uses X and Player 2 uses O
         char symbol;
         if (player1)
             symbol = 'X';
@@ -49,31 +51,33 @@ public class TicTacToe {
 
         //We use modulus to map from field to matrix and check if it has already been marked
 
-        if (field > 6)
-            if (arr[2][(field - 1) % 3] == cfield)
-                arr[2][(field - 1) % 3] = symbol;
+        if(field>6)
+            if(arr[2][(field-1) % 3]==cfield)
+                arr[2][(field-1) % 3]=symbol;
             else
-                System.out.println("It's already marked");
+                return -1;
         else if (field > 3)
             if (arr[1][(field - 1) % 3] == cfield)
                 arr[1][(field - 1) % 3] = symbol;
             else
-                System.out.println("It's already marked");
+                return -1;
         else if (arr[0][(field - 1) % 3] == cfield)
             arr[0][(field - 1) % 3] = symbol;
         else
-            System.out.println("It's already marked");
-
+            return -1;
+        return 1;
     }
+    public void switchPlayer(){                 //Might have to switch because both start as TRUE
 
-    public void switchPlayer() {                 //Might have to switch because both start as TRUE
-
-        if (player1) {
-            player2 = true;
-            player1 = false;
-        } else {
-            player1 = true;
-            player2 = false;
+        if(player1)
+        {
+            player2=true;
+            player1=false;
+        }
+        else
+        {
+            player1=true;
+            player2=false;
         }
     }
 
@@ -93,14 +97,13 @@ public class TicTacToe {
                 winner = 1;
             else
                 winner = 2;
-
             if (arr[i][0] == arr[i][1] && arr[i][1] == arr[i][2]) {
                 return winner;
             }
-
             if (arr[0][i] == arr[1][i] && arr[1][i] == arr[2][i]) {
                 return winner;
             }
+
         }
 
         //We check for 3-in-a-row on the diagonal
@@ -194,31 +197,44 @@ public class TicTacToe {
     }
 
     public void playGame() {
+        player1 = true;
+        player2 = false;
+
         int winner = -1;
+
 
         newBoard();
 
         while (winner == -1) {
+
             System.out.println();
             printBoard();
 
             System.out.println();
 
+            if (player1)
+                System.out.println("Player 1, it's your turn. (X)");
+            else
+                System.out.println("Player 2, it's your turn. (0)");
+
             //Get user input
             boolean validInput = false;
-            int userInput = -1;
+            int userInput;
             while (!validInput) {
                 userInput = getUserInput();
                 if (userInput == -1 || userInput < 1 || userInput > 9)
                     System.out.println("Please select a number between 1 and 9");
-                else
+                else if (setMark(userInput) == 1)
                     validInput = true;
+                else
+                    System.out.println("The field is already marked");
             }
 
-            setMark(userInput);
+
             winner = checkWinner();
             switchPlayer();
         }
+        printBoard(); //The winning game
 
         //Game has ended
         //winner = 0 if draw
