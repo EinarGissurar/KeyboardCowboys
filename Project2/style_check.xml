@@ -29,13 +29,13 @@
     <!-- Method names names always begin with lower case letter -->
     <module name="MethodName">
       <property name="format" value="^[a-z][a-zA-Z0-9]*$"/>
-      <property name="tokens" value="PARAMETER_DEF"/>
+      <property name="tokens" value="METHOD_DEF"/>
     </module>
 
     <!-- Class names names always begin with lower case letter -->
     <module name="TypeName">
       <property name="format" value="^[a-z][a-zA-Z0-9]*$"/>
-      <property name="tokens" value="PARAMETER_DEF"/>
+      <property name="tokens" value="INTERFACE_DEF"/>
     </module>
         
     
