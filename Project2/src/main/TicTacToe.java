@@ -38,9 +38,12 @@ public class TicTacToe
         }
     }
 
-    public void setMark(int field)
+    public int setMark(int field)
     {
-        //X and O are the only characters allowed
+        //returns 1 if successfully marked field
+        //returns -1 if the field is already marked
+
+        //Player 1 uses X and Player 2 uses O
         char symbol;
         if (player1)
             symbol='X';
@@ -59,18 +62,18 @@ public class TicTacToe
             if(arr[2][(field-1) % 3]==cfield)
                 arr[2][(field-1) % 3]=symbol;
             else
-                System.out.println("It's already marked");
+                return -1;
         else if (field>3)
             if(arr[1][(field-1) % 3]==cfield)
                 arr[1][(field-1) % 3]=symbol;
             else
-                System.out.println("It's already marked");
+                return -1;
         else
             if(arr[0][(field-1) % 3]==cfield)
                 arr[0][(field-1) % 3]=symbol;
             else
-                System.out.println("It's already marked");
-
+                return -1;
+        return 1;
     }
     public void switchPlayer(){                 //Might have to switch because both start as TRUE
 
@@ -231,33 +234,46 @@ public class TicTacToe
 
     public void playGame()
     {
+        player1=true;
+        player2=false;
+
         int winner = -1;
+
 
         newBoard();
 
         while (winner == -1)
         {
+
             System.out.println();
             printBoard();
 
             System.out.println();
 
+            if(player1)
+                System.out.println("Player 1, it's your turn. (X)");
+            else
+                System.out.println("Player 2, it's your turn.  (0)");
+
             //Get user input
             boolean validInput = false;
-            int userInput = -1;
+            int userInput;
             while (!validInput)
             {
                 userInput = GetUserInput();
                 if (userInput == -1 || userInput < 1 || userInput > 9)
                     System.out.println("Please select a number between 1 and 9");
-                else
+                else if (setMark(userInput)==1)
                     validInput = true;
+                else
+                    System.out.println("The field is already marked");
             }
 
-            setMark(userInput);
+
             winner = checkWinner();
             switchPlayer();
         }
+        printBoard(); //The winning game
 
         //Game has ended
         //winner = 0 if draw
