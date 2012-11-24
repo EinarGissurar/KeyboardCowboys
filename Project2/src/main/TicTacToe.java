@@ -182,18 +182,6 @@ public class TicTacToe
         return arr[i][j];
     }
 
-    public void printTable()
-    {
-        for(int i=0; i<3; i++)
-        {
-            for(int j=0; j<3; j++)
-            {
-                System.out.print(arr[i][j]);
-            }
-            System.out.println("");
-        }
-    }
-
     public void printWinner(int winner)
     {
         if(winner==0){
@@ -210,6 +198,18 @@ public class TicTacToe
 
     }
 
+    public void printBoard()
+    {
+        for(int i=0; i<3; i++)
+        {
+            for(int j=0; j<3; j++)
+            {
+                System.out.print("["+ arr[i][j] + "]");
+            }
+            System.out.println("");
+        }
+    }
+
     public void playGame()
     {
         int winner = -1;
@@ -219,7 +219,7 @@ public class TicTacToe
         while (winner == -1)
         {
             System.out.println();
-            printTable();
+            printBoard();
 
             System.out.println();
 
