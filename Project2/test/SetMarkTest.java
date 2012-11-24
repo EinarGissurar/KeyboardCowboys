@@ -18,10 +18,10 @@ public class SetMarkTest extends TestCase {
         Assert.assertEquals('X',game.arr[1][1]);
         Assert.assertEquals('O',game.arr[2][1]);
 
-        game.printTable();
+        game.printBoard();
 
         game.newBoard();
-        game.printTable();
+        game.printBoard();
     }
 
     public void testAllowedSymbol()
