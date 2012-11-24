@@ -139,11 +139,11 @@ public class TicTacToe {
         return quitGame;
     }
 
-    public void QuitGame() {
+    public void quitGame() {
         this.quitGame = true;
     }
 
-    public int GetUserInput() {
+    public int getUserInput() {
         try {
             return new Scanner(System.in).nextInt();
         } catch (InputMismatchException ex) {
@@ -151,7 +151,7 @@ public class TicTacToe {
         }
     }
 
-    public char GetMark(int field) {
+    public char getMark(int field) {
         field -= 1;  //Switch to 0 based indices
         int i = -1;
         int j = -1;
@@ -221,7 +221,7 @@ public class TicTacToe {
             boolean validInput = false;
             int userInput;
             while (!validInput) {
-                userInput = GetUserInput();
+                userInput = getUserInput();
                 if (userInput == -1 || userInput < 1 || userInput > 9)
                     System.out.println("Please select a number between 1 and 9");
                 else if (setMark(userInput) == 1)
