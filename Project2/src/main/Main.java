@@ -7,9 +7,9 @@ public class Main
     {
         TicTacToe game = new TicTacToe();
 
-        System.out.println("\nWelcome to TicTacToe!\n");
+        System.out.println("Welcome to TicTacToe!\n");
 
-        game.setMark(5,'X');
+        game.setMark(5);
         game.newBoard();
 
 
@@ -44,9 +44,9 @@ public class Main
                 System.out.println("\nRULES:");
                 System.out.println("\nThe board looks like this:\n");
 
-                System.out.println("[1] [2] [3]");
-                System.out.println("[4] [5] [6]");
-                System.out.println("[7] [8] [9]\n");
+                System.out.println("[1 2 3]");
+                System.out.println("[4 5 6]");
+                System.out.println("[7 8 9]\n");
 
                 System.out.println("Player 1 writes X's, player 2 writes O's.");
                 System.out.println("When it's your turn, press a number from 1 to 9 to mark the corresponding field.");

@@ -7,6 +7,8 @@ public class TicTacToe
 {
     public boolean quitGame = false;
     public char[][] arr;
+    public boolean player1=true;
+    public boolean player2=true;
 
     public TicTacToe()
     {
@@ -36,18 +38,19 @@ public class TicTacToe
         }
     }
 
-    public void setMark(int field, char symbol)
+    public void setMark(int field)
     {
         //X and O are the only characters allowed
+        char symbol;
+        if (player1)
+            symbol='X';
+        else
+            symbol='O';
 
-        if(symbol!='X' && symbol!='O')
-        {
-            System.out.println("This symbol is not allowed");
-            return;
-        }
 
+        //We want to compare it to field value to see if it's already marked
         char cfield;
-        cfield = Character.forDigit(field,10);   //We want to compare it to field value to see if it's already marked
+        cfield = Character.forDigit(field,10);
 
 
         //We use modulus to map from field to matrix and check if it has already been marked
@@ -67,8 +70,22 @@ public class TicTacToe
                 arr[0][(field-1) % 3]=symbol;
             else
                 System.out.println("It's already marked");
-        //System.out.println(arr[2][(field-1)%3]);
+
     }
+    public void switchPlayer(){                 //Might have to switch because both start as TRUE
+
+        if(player1)
+        {
+            player2=true;
+            player1=false;
+        }
+        else
+        {
+            player1=true;
+            player2=false;
+        }
+    }
+
     public int checkWinner()
     {
         //Returns:
@@ -182,6 +199,7 @@ public class TicTacToe
         return arr[i][j];
     }
 
+
     public void printWinner(int winner)
     {
         if(winner==0){
@@ -202,11 +220,12 @@ public class TicTacToe
     {
         for(int i=0; i<3; i++)
         {
+            System.out.print("[");
             for(int j=0; j<3; j++)
             {
-                System.out.print("["+ arr[i][j] + "]");
+                System.out.print(" "+arr[i][j]+" ");
             }
-            System.out.println("");
+            System.out.println("]");
         }
     }
 
@@ -235,8 +254,9 @@ public class TicTacToe
                     validInput = true;
             }
 
-            setMark(userInput,'X');
+            setMark(userInput);
             winner = checkWinner();
+            switchPlayer();
         }
 
         //Game has ended
@@ -247,6 +267,7 @@ public class TicTacToe
         System.out.println();
         printWinner(winner);
     }
+
 }
 
 
