@@ -40,12 +40,13 @@ public class TicTacToe
 
     public void setMark(int field)
     {
+
         //X and O are the only characters allowed
         char symbol;
         if (player1)
-            symbol='X';
+            symbol = 'X';
         else
-            symbol='O';
+            symbol = 'O';
 
 
         //We want to compare it to field value to see if it's already marked
@@ -100,35 +101,36 @@ public class TicTacToe
         //Check for 3-in-a-row vertical and horizontal
         for (int i=0;i<3;i++)
         {
-        if (arr[i][i]=='X')      //We check the intersecting field [0][0], [1][1], [2][2]
-            winner = 1;
-        else
-            winner = 2;
-        if(arr[i][0]==arr[i][1] && arr[i][1]==arr[i][2])
-        {
-            return winner;
-        }
-        if(arr[0][i]==arr[1][i] && arr[1][i]==arr[2][i])
-        {
-            return winner;
-        }
+            if (arr[i][i]=='X')      //We check the intersecting field [0][0], [1][1], [2][2]
+                winner = 1;
+            else
+                winner = 2;
 
+            if(arr[i][0]==arr[i][1] && arr[i][1]==arr[i][2])
+            {
+                return winner;
+            }
+
+            if(arr[0][i]==arr[1][i] && arr[1][i]==arr[2][i])
+            {
+                return winner;
+            }
         }
 
         //We check for 3-in-a-row on the diagonal
         if(arr[0][0]==arr[1][1] && arr[1][1]==arr[2][2])
         {
             if (arr[0][0]=='X')
-            return 1;
-             else
-            return 2;
+                return 1;
+            else
+                return 2;
         }
          if(arr[0][2]==arr[1][1] && arr[1][1]==arr[2][0])
          {
-             if (arr[0][0]=='X')
-            return 1;
-             else
-            return 2;
+            if (arr[0][0]=='X')
+                return 1;
+            else
+                return 2;
         }
         for (int i=0;i<3;i++)
         {
@@ -154,12 +156,12 @@ public class TicTacToe
         return quitGame;
     }
 
-    public void QuitGame()
+    public void quitGame()
     {
         this.quitGame = true;
     }
 
-    public int GetUserInput()
+    public int getUserInput()
     {
         try
         {
@@ -171,7 +173,7 @@ public class TicTacToe
         }
     }
 
-    public char GetMark(int field)
+    public char getMark(int field)
     {
         field -= 1;  //Switch to 0 based indices
         int i = -1;
@@ -247,7 +249,7 @@ public class TicTacToe
             int userInput = -1;
             while (!validInput)
             {
-                userInput = GetUserInput();
+                userInput = getUserInput();
                 if (userInput == -1 || userInput < 1 || userInput > 9)
                     System.out.println("Please select a number between 1 and 9");
                 else
