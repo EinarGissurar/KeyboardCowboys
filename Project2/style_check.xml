@@ -37,8 +37,13 @@
       <property name="format" value="^[a-z][a-zA-Z0-9]*$"/>
       <property name="tokens" value="INTERFACE_DEF"/>
     </module>
+
+    <!-- Indentation should be 4 spaces -->
+    <module name="Indentation">
+      <property name="basicOffset" value="4"/>
+    </module>
         
-    
+  
   </module>
   <module name="StrictDuplicateCode">
       <property name="min" value="15"/>
