@@ -12,7 +12,9 @@
     <property name="classes.dir"    value="${build.dir}/classes"/> <!-- ProgramClass directory -->
     <property name="test.classes.dir" value="${build.dir}/test-classes"/> <!-- TestClass directory -->
     <property name="instr.classes.dir" value="${build.dir}/instr-classes" /> <!-- InstrumentClass directory -->
-    <property name="coverage.dir"   value="coverage"/> <!-- Coverage directory -->
+    <property name="doc.dir"        value="doc"/>               <!-- Documentation, code coverage and inspection -->
+    <property name="coverage.dir"   value="${doc.dir}/coverage"/> <!-- Coverage directory -->
+    <property name="checkstyle.dir" value="${doc.dir}/checkstyle"/>
 
 
     <!-- Classpaths -->
@@ -38,14 +40,19 @@
         <pathelement location="${lib.dir}/emma_ant.jar" />
     </path>
 
+    <path id="checkstyle.classpath">
+        <pathelement location="${lib.dir}/checkstyle-5.6-all.jar"/>
+    </path>
+
     <!-- Task imports -->
-    <taskdef resource="emma_ant.properties" classpathref="emma.classpath" />
+    <taskdef resource="emma_ant.properties" classpathref="emma.classpath" /> 
+    <taskdef resource="checkstyletask.properties"  classpathref="checkstyle.classpath"/>
 
 
     <!-- Clean build -->
     <target name="clean">
         <delete dir="${build.dir}"/>
-        <delete dir="${coverage.dir}"/>
+        <delete dir="${doc.dir}"/>
     </target>
 
     <!-- Initialize build -->
@@ -54,7 +61,22 @@
         <mkdir dir="${classes.dir}"/>
         <mkdir dir="${test.classes.dir}"/>
         <mkdir dir="${jar.dir}"/>
+        <mkdir dir="${doc.dir}"/>
     </target>
+
+    <!-- Code Inspection -->
+    <target name="checkstyle"
+            depends="initialize" 
+            description="Generates a report of code convention violations.">
+        <mkdir dir="${checkstyle.dir}" />
+
+        <checkstyle config="style_check.xml">
+            <fileset dir="${src.dir}" includes="**/*.java"/>
+            <formatter type="plain" toFile="${checkstyle.dir}/checkstyle_errors.txt"/>
+            <formatter type="xml" toFile="${checkstyle.dir}/checkstyle_errors.xml"/>
+        </checkstyle>
+    </target>
+
 
 
     <!-- Compile code and tests -->
@@ -74,7 +96,7 @@
         </jar>
     </target>
 
-    <!-- Run tests -->
+    <!-- Run tests (Including code coverage) -->
     <target name="test" depends="jar">
         <property name="emma.enabled" value="true" />
         <mkdir dir="${coverage.dir}" />

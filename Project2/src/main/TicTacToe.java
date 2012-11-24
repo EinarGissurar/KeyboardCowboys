@@ -47,6 +47,11 @@ public class TicTacToe
         else
             symbol='O';
 
+        if(symbol!='X' && symbol!='O')
+        {
+            System.out.println("This symbol is not allowed");
+            return;
+        }
 
         //We want to compare it to field value to see if it's already marked
         char cfield;
@@ -141,13 +146,11 @@ public class TicTacToe
         }
         if(draw)
         {
-            System.out.println("It's draw hurreYY!, let's play again");
             return 0;
         }
 
-
-        System.out.println("The title TicTacToe-Champion is still up for grabs");
-        return -1;  //If the game is not over yet
+        //The game is not over yet
+        return -1;
     }
 
 
@@ -201,18 +204,6 @@ public class TicTacToe
         return arr[i][j];
     }
 
-    public void printTable()
-    {
-        for(int i=0; i<3; i++)
-        {
-            for(int j=0; j<3; j++)
-            {
-                System.out.print("["+ arr[i][j] + "]");
-            }
-            System.out.println("");
-        }
-    }
-
     public void printWinner(int winner)
     {
         if(winner==0){
@@ -228,4 +219,56 @@ public class TicTacToe
             System.out.println("something went terribly wrong..");
 
     }
+
+    public void printBoard()
+    {
+        for(int i=0; i<3; i++)
+        {
+            for(int j=0; j<3; j++)
+            {
+                System.out.print("["+ arr[i][j] + "]");
+            }
+            System.out.println("");
+        }
+    }
+
+    public void playGame()
+    {
+        int winner = -1;
+
+        newBoard();
+
+        while (winner == -1)
+        {
+            System.out.println();
+            printBoard();
+
+            System.out.println();
+
+            //Get user input
+            boolean validInput = false;
+            int userInput = -1;
+            while (!validInput)
+            {
+                userInput = GetUserInput();
+                if (userInput == -1 || userInput < 1 || userInput > 9)
+                    System.out.println("Please select a number between 1 and 9");
+                else
+                    validInput = true;
+            }
+
+            setMark(userInput,'X');
+            winner = checkWinner();
+        }
+
+        //Game has ended
+        //winner = 0 if draw
+        //winner = 1 if player 1 won
+        //winner = 2 if player 2 won
+
+        System.out.println();
+        printWinner(winner);
+    }
 }
+
+

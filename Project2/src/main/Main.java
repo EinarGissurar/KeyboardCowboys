@@ -6,9 +6,8 @@ public class Main
     public static void main(String[] args)
     {
         TicTacToe game = new TicTacToe();
-        game.checkWinner();
 
-        System.out.println("Welcome to TicTacToe!\n");
+        System.out.println("\nWelcome to TicTacToe!\n");
 
         game.setMark(5);
         game.newBoard();
@@ -37,11 +36,12 @@ public class Main
             if (userInput == 1)
             {
                 //Play game
-                System.out.println("\nPlay game!\n");
+                game.playGame();
             }
             else if (userInput == 2)
             {
                 //Print rulebook
+                System.out.println("\nRULES:");
                 System.out.println("\nThe board looks like this:\n");
 
                 System.out.println("[1] [2] [3]");
@@ -59,7 +59,7 @@ public class Main
             }
         }
 
-        System.out.println("Have a nice day!");
+        System.out.println("\nHave a nice day!");
 	}
 
 
