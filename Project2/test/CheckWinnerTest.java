@@ -17,11 +17,11 @@ public class CheckWinnerTest extends TestCase {
 
         Assert.assertEquals(1,game.checkWinner());
 
-        game.printTable();
+        game.printBoard();
 
         game.newBoard();
 
-        game.printTable();
+        game.printBoard();
 
         game.setMark(1,'O');
         game.setMark(5,'O');
@@ -47,7 +47,7 @@ public class CheckWinnerTest extends TestCase {
         game.setMark(8,'X');
         game.setMark(9,'O');
 
-        game.printTable();
+        game.printBoard();
 
         game.checkWinner();
         Assert.assertEquals(1,game.checkWinner());
@@ -67,7 +67,7 @@ public class CheckWinnerTest extends TestCase {
         game.setMark(9,'O');
 
         game.checkWinner();
-        game.printTable();
+        game.printBoard();
 
 
 
