@@ -7,7 +7,7 @@ public class Main
     {
         TicTacToe game = new TicTacToe();
 
-        System.out.println("\nWelcome to TicTacToe!\n");
+        System.out.println("Welcome to TicTacToe!\n");
 
         game.setMark(5);
         game.newBoard();

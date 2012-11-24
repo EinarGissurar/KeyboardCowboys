@@ -47,11 +47,6 @@ public class TicTacToe
         else
             symbol='O';
 
-        if(symbol!='X' && symbol!='O')
-        {
-            System.out.println("This symbol is not allowed");
-            return;
-        }
 
         //We want to compare it to field value to see if it's already marked
         char cfield;
@@ -105,7 +100,7 @@ public class TicTacToe
         //Check for 3-in-a-row vertical and horizontal
         for (int i=0;i<3;i++)
         {
-        if (arr[i][i]=='X')      //We check the intersecting field [0][0], [1][1], [2]{2]
+        if (arr[i][i]=='X')      //We check the intersecting field [0][0], [1][1], [2][2]
             winner = 1;
         else
             winner = 2;
@@ -204,6 +199,7 @@ public class TicTacToe
         return arr[i][j];
     }
 
+
     public void printWinner(int winner)
     {
         if(winner==0){
@@ -257,8 +253,9 @@ public class TicTacToe
                     validInput = true;
             }
 
-            setMark(userInput,'X');
+            setMark(userInput);
             winner = checkWinner();
+            switchPlayer();
         }
 
         //Game has ended
@@ -269,6 +266,7 @@ public class TicTacToe
         System.out.println();
         printWinner(winner);
     }
+
 }
 
 
