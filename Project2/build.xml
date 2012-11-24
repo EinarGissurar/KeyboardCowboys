@@ -153,6 +153,7 @@
 
 
     <!-- Run complete build process-->
-    <target name="main" depends="test,run"/>
+    <target name="build" depends="clean, init, compile, jar"/>
+    
 
 </project>
