@@ -11,6 +11,8 @@
     <property name="jar.dir"     value="${build.dir}/jar"/> <!-- Jar directory -->
     <property name="classes.dir"    value="${build.dir}/classes"/> <!-- ProgramClass directory -->
     <property name="test.classes.dir" value="${build.dir}/test-classes"/> <!-- TestClass directory -->
+    <property name="instr.classes.dir" value="${build.dir}/instr-classes" /> <!-- InstrumentClass directory -->
+    <property name="coverage.dir"   value="coverage"/> <!-- Coverage directory -->
 
 
     <!-- Classpaths -->
@@ -31,9 +33,19 @@
           <pathelement location="${test.classes.dir}" />
     </path>
 
+    <path id="emma.classpath" >
+        <pathelement location="${lib.dir}/emma.jar" />
+        <pathelement location="${lib.dir}/emma_ant.jar" />
+    </path>
+
+    <!-- Task imports -->
+    <taskdef resource="emma_ant.properties" classpathref="emma.classpath" />
+
+
     <!-- Clean build -->
     <target name="clean">
         <delete dir="${build.dir}"/>
+        <delete dir="${coverage.dir}"/>
     </target>
 
     <!-- Initialize build -->
@@ -44,10 +56,13 @@
         <mkdir dir="${jar.dir}"/>
     </target>
 
+
     <!-- Compile code and tests -->
     <target name="compile" depends='initialize'>
-        <javac srcdir="${src.dir}"  destdir="${classes.dir}" classpathref="compile.classpath" includeantruntime="false"/>
-        <javac srcdir="${test.dir}" destdir="${test.classes.dir}" classpathref="test.compile.classpath" includeantruntime="false"/>
+        <javac srcdir="${src.dir}"  destdir="${classes.dir}" classpathref="compile.classpath"
+               source="1.6" target="1.6" includeantruntime="false"/>
+        <javac srcdir="${test.dir}" destdir="${test.classes.dir}" classpathref="test.compile.classpath"
+               source="1.6" target="1.6" includeantruntime="false"/>
     </target>
 
     <!-- Create Jar file -->
@@ -61,23 +76,59 @@
 
     <!-- Run tests -->
     <target name="test" depends="jar">
+        <property name="emma.enabled" value="true" />
+        <mkdir dir="${coverage.dir}" />
+        <mkdir dir="${instr.classes.dir}" />
+
+        <!-- Copy base class files -->
+        <copy todir="${instr.classes.dir}">
+            <fileset dir="${classes.dir}" />
+        </copy>
+
+        <!-- Instrument class files -->
+        <emma enabled="${emma.enabled}" >
+            <instr instrpath="${instr.classes.dir}"
+                metadatafile="${coverage.dir}/metadata.emma"
+                merge="true"
+                mode="overwrite"
+            />
+        </emma>
+
         <junit printsummary="yes">
-            <classpath location="${classes.dir}" />
+            
             <classpath>
+                <pathelement location="${instr.classes.dir}"/>
+                <pathelement location="${test.classes.dir}"/>
                 <path refid="junit.classpath"/>
+                <path refid="emma.classpath" />
             </classpath>
+            <jvmarg value="-Demma.coverage.out.file=${coverage.dir}/coverage.emma" />
+            <jvmarg value="-Demma.coverage.out.merge=true" />
 
             <batchtest fork="yes">
                 <fileset dir="${test.dir}" includes="*Test.java"/>
             </batchtest>
         </junit>
+
+        <emma enabled="${emma.enabled}" >
+            <report sourcepath="${src.dir}" >
+                <fileset dir="${coverage.dir}" >
+                    <include name="*.emma" />
+                </fileset>
+
+                <txt outfile="${coverage.dir}/coverage.txt" />
+                <html outfile="${coverage.dir}/coverage.html" />
+            </report>
+        </emma>
     </target>
+
 
     <!-- Run executable -->
     <target name="run" depends="jar">
         <java jar="${jar.dir}/${ant.project.name}.jar" fork="true">
         </java>
     </target>
+
 
     <!-- Run complete build process-->
     <target name="main" depends="test,run"/>
