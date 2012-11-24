@@ -194,6 +194,7 @@ public class TicTacToe {
     public void playGame() {
         int winner = -1;
 
+
         newBoard();
 
         while (winner == -1) {
@@ -202,6 +203,11 @@ public class TicTacToe {
 
             System.out.println();
 
+            if(player1)
+                System.out.println("Player 1, it's your turn. (X)");
+            else
+                System.out.println("Player 2, it's your turn.  (0)");
+
             //Get user input
             boolean validInput = false;
             int userInput = -1;
@@ -209,14 +215,17 @@ public class TicTacToe {
                 userInput = getUserInput();
                 if (userInput == -1 || userInput < 1 || userInput > 9)
                     System.out.println("Please select a number between 1 and 9");
-                else
+                else if (setMark(userInput)==1)
                     validInput = true;
+                else
+                    System.out.println("The field is already marked");
             }
 
-            setMark(userInput);
+
             winner = checkWinner();
             switchPlayer();
         }
+        printBoard(); //The winning game
 
         //Game has ended
         //winner = 0 if draw
