@@ -34,9 +34,9 @@ public class PrintTableTest extends TestCase
         String separator = System.getProperty("line.separator");
         capture.printTable();
 
-        assertEquals(capture.arr[0][0] + "" + capture.arr[0][1] + "" + capture.arr[0][2] + "\n" +
-                    capture.arr[1][0] + "" + capture.arr[1][1] + "" + capture.arr[1][2] + "\n" +
-                    capture.arr[2][0] + "" + capture.arr[2][1] + "" + capture.arr[2][2]+ separator, os.toString());
+        assertEquals("["+ capture.arr[0][0] + "]"+ "" + "["+ capture.arr[0][1] + "]"+"" + "["+capture.arr[0][2] +"]"+ "\n" +
+                "["+ capture.arr[1][0] + "]"+ "" + "["+ capture.arr[1][1] + "]"+"" + "["+capture.arr[1][2] +"]"+ "\n" +
+                "["+ capture.arr[2][0] + "]"+ "" + "["+ capture.arr[2][1] + "]"+"" + "["+capture.arr[2][2] +"]" +separator, os.toString());
 
         System.setOut(originalOut);
 
