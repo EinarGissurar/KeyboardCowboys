@@ -8,10 +8,10 @@ public class MarkTest extends TestCase
 
     public void testGetMark()
     {
-        game.arr[2][2] = 'O';   //Field 9
-        game.arr[1][1] = 'O';   //Field 5
-        game.arr[1][2] = 'X';   //Field 6
-        game.arr[0][0] = 'X';   //Field 1
+        game.board[2][2] = 'O';   //Field 9
+        game.board[1][1] = 'O';   //Field 5
+        game.board[1][2] = 'X';   //Field 6
+        game.board[0][0] = 'X';   //Field 1
 
         Assert.assertEquals('O',game.getMark(9));
         Assert.assertEquals('O',game.getMark(5));

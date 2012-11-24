@@ -28,9 +28,9 @@ public class PrintBoardTest extends TestCase
         String separator = System.getProperty("line.separator");
         capture.printBoard();
 
-        Assert.assertEquals("[ "+ capture.arr[0][0] + "  "+ capture.arr[0][1] + "  "+capture.arr[0][2] +" ]"+ separator
-                + "[ "+ capture.arr[1][0] + "  "+ capture.arr[1][1]+ "  "+capture.arr[1][2] +" ]"+ separator
-                + "[ "+ capture.arr[2][0] + "  "+ capture.arr[2][1] + "  "+capture.arr[2][2] +" ]"+separator, os.toString());
+        Assert.assertEquals("[ "+ capture.board[0][0] + "  "+ capture.board[0][1] + "  "+capture.board[0][2] +" ]"+ separator
+                + "[ "+ capture.board[1][0] + "  "+ capture.board[1][1]+ "  "+capture.board[1][2] +" ]"+ separator
+                + "[ "+ capture.board[2][0] + "  "+ capture.board[2][1] + "  "+capture.board[2][2] +" ]"+separator, os.toString());
 
         System.setOut(originalOut);
 

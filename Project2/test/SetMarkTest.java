@@ -11,11 +11,13 @@ public class SetMarkTest extends TestCase {
         game.switchPlayer();
         game.setMark(8);
         game.switchPlayer();
+
+        //Test to see if it accidentally overwrites
         game.setMark(5);
         game.setMark(8);
 
-        Assert.assertEquals('X',game.arr[1][1]);
-        Assert.assertEquals('O',game.arr[2][1]);
+        Assert.assertEquals('X', game.board[1][1]);
+        Assert.assertEquals('O',game.board[2][1]);
 
         game.printBoard();
 

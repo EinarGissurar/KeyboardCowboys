@@ -4,29 +4,24 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class TicTacToe {
-    public boolean quitGame = false;
-    public char[][] arr;
-    public boolean player1 = true;
-    public boolean player2 = true;
+    public boolean quitGame;
+    public char[][] board;
+    public boolean player1;
+    public boolean player2;
 
     public TicTacToe() {
         this.quitGame = false;
-        arr = new char[3][3];
-        char cntr = '1';
+        board = new char[3][3];
+        this.player1 = true;
+        this.player2 = false;
 
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                arr[i][j] = cntr;
-                cntr++;
-            }
-        }
     }
 
     public void newBoard() {
         char cntr = '1';
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                arr[i][j] = cntr;
+                board[i][j] = cntr;
                 cntr++;
             }
         }
@@ -52,17 +47,17 @@ public class TicTacToe {
         //We use modulus to map from field to matrix and check if it has already been marked
 
         if(field>6)
-            if(arr[2][(field-1) % 3]==cfield)
-                arr[2][(field-1) % 3]=symbol;
+            if(board[2][(field-1) % 3]==cfield)
+                board[2][(field-1) % 3]=symbol;
             else
                 return -1;
         else if (field > 3)
-            if (arr[1][(field - 1) % 3] == cfield)
-                arr[1][(field - 1) % 3] = symbol;
+            if (board[1][(field - 1) % 3] == cfield)
+                board[1][(field - 1) % 3] = symbol;
             else
                 return -1;
-        else if (arr[0][(field - 1) % 3] == cfield)
-            arr[0][(field - 1) % 3] = symbol;
+        else if (board[0][(field - 1) % 3] == cfield)
+            board[0][(field - 1) % 3] = symbol;
         else
             return -1;
         return 1;
@@ -93,35 +88,35 @@ public class TicTacToe {
         int winner;
         //Check for 3-in-a-row vertical and horizontal
         for (int i = 0; i < 3; i++) {
-            if (arr[i][i] == 'X')      //We check the intersecting field [0][0], [1][1], [2][2]
+            if (board[i][i] == 'X')      //We check the intersecting field [0][0], [1][1], [2][2]
                 winner = 1;
             else
                 winner = 2;
-            if (arr[i][0] == arr[i][1] && arr[i][1] == arr[i][2]) {
+            if (board[i][0] == board[i][1] && board[i][1] == board[i][2]) {
                 return winner;
             }
-            if (arr[0][i] == arr[1][i] && arr[1][i] == arr[2][i]) {
+            if (board[0][i] == board[1][i] && board[1][i] == board[2][i]) {
                 return winner;
             }
 
         }
 
         //We check for 3-in-a-row on the diagonal
-        if (arr[0][0] == arr[1][1] && arr[1][1] == arr[2][2]) {
-            if (arr[0][0] == 'X')
+        if (board[0][0] == board[1][1] && board[1][1] == board[2][2]) {
+            if (board[0][0] == 'X')
                 return 1;
             else
                 return 2;
         }
-        if (arr[0][2] == arr[1][1] && arr[1][1] == arr[2][0]) {
-            if (arr[0][0] == 'X')
+        if (board[0][2] == board[1][1] && board[1][1] == board[2][0]) {
+            if (board[0][0] == 'X')
                 return 1;
             else
                 return 2;
         }
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                if (Character.isDigit(arr[i][j]))
+                if (Character.isDigit(board[i][j]))
                     draw = false;
 
             }
@@ -170,7 +165,7 @@ public class TicTacToe {
             j = field % 3;
         }
 
-        return arr[i][j];
+        return board[i][j];
     }
 
 
@@ -190,7 +185,7 @@ public class TicTacToe {
         for (int i = 0; i < 3; i++) {
             System.out.print("[");
             for (int j = 0; j < 3; j++) {
-                System.out.print(" " + arr[i][j] + " ");
+                System.out.print(" " + board[i][j] + " ");
             }
             System.out.println("]");
         }
