@@ -22,7 +22,7 @@ public class PrintWinnerTest extends TestCase
         capture = new TicTacToe();
     }
 
-    public final void testPayer1Wins()
+    public final void testPlayer1Wins()
     {
         PrintStream originalOut = System.out;
         OutputStream os = new ByteArrayOutputStream();
@@ -36,7 +36,7 @@ public class PrintWinnerTest extends TestCase
         System.setOut(originalOut);
     }
 
-    public final void testPayer2Wins()
+    public final void testPlayer2Wins()
     {
         PrintStream originalOut = System.out;
         OutputStream os = new ByteArrayOutputStream();
