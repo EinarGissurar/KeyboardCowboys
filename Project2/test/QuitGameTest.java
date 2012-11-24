@@ -19,7 +19,7 @@ public class QuitGameTest extends TestCase
     {
         Assert.assertEquals(false, game.isQuitGame());
 
-        game.QuitGame();
+        game.quitGame();
 
         Assert.assertEquals(true, game.isQuitGame());
     }

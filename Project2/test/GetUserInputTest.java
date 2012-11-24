@@ -11,10 +11,10 @@ public class GetUserInputTest extends TestCase
     {
         ByteArrayInputStream in = new ByteArrayInputStream("abc".getBytes());
         System.setIn(in);
-        Assert.assertEquals(-1, game.GetUserInput());
+        Assert.assertEquals(-1, game.getUserInput());
 
         in = new ByteArrayInputStream("3".getBytes());
         System.setIn(in);
-        Assert.assertEquals(3, game.GetUserInput());
+        Assert.assertEquals(3, game.getUserInput());
     }
 }
