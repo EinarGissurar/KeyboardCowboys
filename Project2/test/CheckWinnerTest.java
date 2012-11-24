@@ -11,9 +11,10 @@ public class CheckWinnerTest extends TestCase {
 
     public void testCheckWinner()
     {
-        game.setMark(1,'X');
-        game.setMark(2,'X');
-        game.setMark(3,'X');
+        //X
+        game.setMark(1);
+        game.setMark(2);
+        game.setMark(3);
 
         Assert.assertEquals(1,game.checkWinner());
 
@@ -23,29 +24,33 @@ public class CheckWinnerTest extends TestCase {
 
         game.printBoard();
 
-        game.setMark(1,'O');
-        game.setMark(5,'O');
-        game.setMark(9,'O');
+        game.setMark(1);
+        game.setMark(5);
+        game.setMark(9);
+
+        Assert.assertEquals(1,game.checkWinner());
 
         game.newBoard();
 
-        game.setMark(2,'X');
-        game.setMark(5,'X');
-        game.setMark(8,'X');
+        game.setMark(2);
+        game.setMark(5);
+        game.setMark(8);
 
         game.newBoard();
 
-        game.setMark(1,'X');
-        game.setMark(2,'O');
-        game.setMark(3,'X');
+        //1,3,5,7,8 vs. 2,4,6,9
+        game.setMark(1);
+        game.setMark(3);
+        game.setMark(5);
+        game.setMark(7);
+        game.setMark(8);
 
-        game.setMark(4,'O');
-        game.setMark(5,'X');
-        game.setMark(6,'O');
+        game.switchPlayer();
 
-        game.setMark(7,'X');
-        game.setMark(8,'X');
-        game.setMark(9,'O');
+        game.setMark(2);
+        game.setMark(4);
+        game.setMark(6);
+        game.setMark(9);
 
         game.printBoard();
 
@@ -54,17 +59,19 @@ public class CheckWinnerTest extends TestCase {
 
         game.newBoard();
 
-        game.setMark(1,'X');
-        game.setMark(2,'O');
-        game.setMark(3,'X');
+        // 1,3,5,8 vs. 2,4,6,7,9
+        game.setMark(1);
+        game.setMark(3);
+        game.setMark(5);
+        game.setMark(8);
 
-        game.setMark(4,'O');
-        game.setMark(5,'X');
-        game.setMark(6,'O');
+        game.switchPlayer();
 
-        game.setMark(7,'O');
-        game.setMark(8,'X');
-        game.setMark(9,'O');
+        game.setMark(2);
+        game.setMark(4);
+        game.setMark(6);
+        game.setMark(7);
+        game.setMark(9);
 
         game.checkWinner();
         game.printBoard();
@@ -73,7 +80,5 @@ public class CheckWinnerTest extends TestCase {
 
 
     }
-
-
 
 }

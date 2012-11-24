@@ -7,6 +7,8 @@ public class TicTacToe
 {
     public boolean quitGame = false;
     public char[][] arr;
+    public boolean player1=true;
+    public boolean player2=true;
 
     public TicTacToe()
     {
@@ -36,9 +38,14 @@ public class TicTacToe
         }
     }
 
-    public void setMark(int field, char symbol)
+    public void setMark(int field)
     {
         //X and O are the only characters allowed
+        char symbol;
+        if (player1)
+            symbol='X';
+        else
+            symbol='O';
 
         if(symbol!='X' && symbol!='O')
         {
@@ -46,8 +53,9 @@ public class TicTacToe
             return;
         }
 
+        //We want to compare it to field value to see if it's already marked
         char cfield;
-        cfield = Character.forDigit(field,10);   //We want to compare it to field value to see if it's already marked
+        cfield = Character.forDigit(field,10);
 
 
         //We use modulus to map from field to matrix and check if it has already been marked
@@ -67,8 +75,22 @@ public class TicTacToe
                 arr[0][(field-1) % 3]=symbol;
             else
                 System.out.println("It's already marked");
-        //System.out.println(arr[2][(field-1)%3]);
+
     }
+    public void switchPlayer(){                 //Might have to switch because both start as TRUE
+
+        if(player1)
+        {
+            player2=true;
+            player1=false;
+        }
+        else
+        {
+            player1=true;
+            player2=false;
+        }
+    }
+
     public int checkWinner()
     {
         //Returns:
@@ -124,13 +146,11 @@ public class TicTacToe
         }
         if(draw)
         {
-            System.out.println("It's draw hurreYY!, let's play again");
             return 0;
         }
 
-
-        System.out.println("The title TicTacToe-Champion is still up for grabs");
-        return -1;  //If the game is not over yet
+        //The game is not over yet
+        return -1;
     }
 
 
@@ -212,4 +232,44 @@ public class TicTacToe
             System.out.println("]");
         }
     }
+
+    public void playGame()
+    {
+        int winner = -1;
+
+        newBoard();
+
+        while (winner == -1)
+        {
+            System.out.println();
+            printBoard();
+
+            System.out.println();
+
+            //Get user input
+            boolean validInput = false;
+            int userInput = -1;
+            while (!validInput)
+            {
+                userInput = GetUserInput();
+                if (userInput == -1 || userInput < 1 || userInput > 9)
+                    System.out.println("Please select a number between 1 and 9");
+                else
+                    validInput = true;
+            }
+
+            setMark(userInput,'X');
+            winner = checkWinner();
+        }
+
+        //Game has ended
+        //winner = 0 if draw
+        //winner = 1 if player 1 won
+        //winner = 2 if player 2 won
+
+        System.out.println();
+        printWinner(winner);
+    }
 }
+
+
