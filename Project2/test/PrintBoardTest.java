@@ -7,6 +7,15 @@ import java.io.OutputStream;
 
 import java.io.PrintStream;
 
+/**
+ * Made to test the function PrintBoard()
+ *
+ * Starts by setting up the instance of TicTacToe, then we capture the PrintStream from the function and
+ * check if the stream matches the results we expect to get: the board with the right values, inside
+ * angle brackets. If the PrintStream from the function matches the expected string, we pass the test.
+ *
+ */
+
 
 public class PrintBoardTest extends TestCase
 {
