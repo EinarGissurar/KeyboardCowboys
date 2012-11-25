@@ -5,6 +5,16 @@ import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
 
+/**
+ * Made to test the function PrintWinner()
+ *
+ * Sets up the instance of TicTacToe, then we capture the PrintStream from the function for different inputs
+ * in printWinner. For input 1 we expect to get "Player 1 wins!", for input 2 we expect "Player 2 wins!",
+ * for input 3 we expect "DRAW!" and for any other input we expect "something went terribly wrong..".
+ * If the PrintStream from the function matches the expected string, we pass the test.
+ *
+ */
+
 public class PrintWinnerTest extends TestCase
 {
     TicTacToe capture;

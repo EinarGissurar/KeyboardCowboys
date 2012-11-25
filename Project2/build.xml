@@ -15,7 +15,8 @@
     <property name="doc.dir"        value="doc"/>               <!-- Documentation, code coverage and inspection -->
     <property name="coverage.dir"   value="${doc.dir}/coverage"/> <!-- Coverage directory -->
     <property name="checkstyle.dir" value="${doc.dir}/checkstyle"/>
-
+    <property name="javadoc.dir"    value="${doc.dir}/javadoc"/>
+    <property name="run.file" value="run.bat" />
 
     <!-- Classpaths -->
     <path id="compile.classpath">
@@ -77,6 +78,14 @@
         </checkstyle>
     </target>
 
+    <target name="javadoc" depends="initialize"> 
+        <mkdir dir="${javadoc.dir}"/> 
+        <javadoc destdir="${javadoc.dir}" windowtitle="TicTacToe documentation">  
+            <sourcepath location="${src.dir}"/>  
+            <classpath location="${classes.dir}"/>  
+        </javadoc>  
+    </target>
+
 
 
     <!-- Compile code and tests -->
@@ -94,6 +103,9 @@
                 <attribute name="Main-Class" value="${main-class}"/>
             </manifest>
         </jar>
+        <echo file="${run.file}">
+            java -jar build/jar/main.Main.jar
+        </echo>
     </target>
 
     <!-- Run tests (Including code coverage) -->
@@ -153,7 +165,7 @@
 
 
     <!-- Run complete build process-->
-    <target name="build" depends="clean, initialize, checkstyle, compile, jar"/>
+    <target name="build" depends="clean, initialize, checkstyle, javadoc, compile, jar"/>
 
 
 </project>
