@@ -4,6 +4,14 @@ import junit.framework.Assert;
 import junit.framework.TestCase;
 import main.TicTacToe;
 
+/**
+ * Made to test the function checkWinner()
+ *
+ * Creates stubs with different end results (player 1 wins, player 2 wins, draw)
+ * and checks if the result from checkWinner corresponds to those results usinng junit - assert.
+ * The test is dependent on newBoard for a default setup of the board.
+ *
+ */
 
 public class CheckWinnerTest extends TestCase {
 

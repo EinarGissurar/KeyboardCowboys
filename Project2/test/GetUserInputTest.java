@@ -3,6 +3,12 @@ import junit.framework.TestCase;
 import main.TicTacToe;
 import java.io.*;
 
+/**
+ * Made to test GetUserInput
+ *
+ *
+ */
+
 public class GetUserInputTest extends TestCase
 {
     TicTacToe game = new TicTacToe();

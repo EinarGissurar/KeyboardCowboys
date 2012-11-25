@@ -1,5 +1,14 @@
 package main;
 
+/**
+ * Tic Tac Toe and all of it's functions
+ * Player 1 always has the symbol X and player 2 O
+ *
+ */
+
+
+
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -17,6 +26,14 @@ public class TicTacToe {
 
     }
 
+    /**
+     *  Fills out the board with char symbols of numbers of 1-9
+     *
+     *  [1][2][3]
+     *  [4][5][6]
+     *  [7][8][9]
+     */
+
     public void newBoard() {
         char cntr = '1';
         for (int i = 0; i < 3; i++) {
@@ -27,9 +44,14 @@ public class TicTacToe {
         }
     }
 
+    /**Marks the selected field (1-9) with either a "X" for player 1 or "O" for player 2.
+     *
+     * @param field   The field which we want to mark
+     * @return        Returns a int; 1 if successfully marked the field
+     *                -1 if the field is already marked
+     */
     public int setMark(int field) {
-        //returns 1 if successfully marked field
-        //returns -1 if the field is already marked
+
 
         //Player 1 uses X and Player 2 uses O
         char symbol;
@@ -62,7 +84,13 @@ public class TicTacToe {
             return -1;
         return 1;
     }
-    public void switchPlayer(){                 //Might have to switch because both start as TRUE
+
+    /**
+     *  Switches players from true to false and false to true.
+     *  One of the players is always true and one false
+     */
+
+    public void switchPlayer(){
 
         if(player1)
         {
@@ -75,6 +103,19 @@ public class TicTacToe {
             player2=false;
         }
     }
+
+    /** Checks if the current board has a winning game or a draw.
+     *
+     * For a winning game it simply goes over the eight possible winning games and checks if
+     * the fields have the same mark. We also check one of those fields symbol to see who won.
+     * To see if it's a draw we go over each field checking if the char value corresponds to a number,
+     * if none of them do then we have a draw.
+     *
+     * @return      1 if player 1 has won
+     *              2 if player 2 has won
+     *              0 if it's a draw between player 1 and 2
+     *              -1 if now winning game and the board is not fully marked
+     */
 
     public int checkWinner() {
         //Returns:
@@ -132,14 +173,30 @@ public class TicTacToe {
         return -1;
     }
 
+    /**
+     * Checks if we have decided to quit the game (get function).
+     *
+     * @return  the boolean value quitGame
+     */
 
     public boolean isQuitGame() {
         return quitGame;
     }
 
+    /**
+     * Sets quitGame to true
+     */
+
     public void quitGame() {
         this.quitGame = true;
     }
+
+    /**
+     * Gets userinput from user (keyboard)
+     *
+     * @return  the user input if its a int
+     *          -1 if the input is not an integer
+     */
 
     public int getUserInput() {
         try {
@@ -148,6 +205,13 @@ public class TicTacToe {
             return -1;
         }
     }
+
+    /**
+     * Gets the symbol marked in field (only used for tests)
+     *
+     * @param field     a int value from 1-9
+     * @return          returns the symbol in the field
+     */
 
     public char getMark(int field) {
         field -= 1;  //Switch to 0 based indices
@@ -171,6 +235,11 @@ public class TicTacToe {
         return board[i][j];
     }
 
+    /**
+     * Prints the Winner
+     *
+     * @param winner    Who won; 0 for draw, 1 for player 1 and 2 for player 2
+     */
 
     public void printWinner(int winner) {
         if (winner == 0) {
@@ -184,6 +253,10 @@ public class TicTacToe {
 
     }
 
+    /**
+     * Print out the current board, that is the values of the matrix board[][]
+     */
+
     public void printBoard() {
         for (int i = 0; i < 3; i++) {
             System.out.print("[");
@@ -193,6 +266,11 @@ public class TicTacToe {
             System.out.println("]");
         }
     }
+
+    /**
+     * The run function to play the game
+     * Fá Stinna til þess að lýsa þessu betur
+     */
 
     public void playGame() {
         player1 = true;

@@ -2,12 +2,19 @@ import junit.framework.Assert;
 import junit.framework.TestCase;
 import main.TicTacToe;
 
-public class ExtendedUnitTest extends TestCase {
+/**
+ *Here we create a Functional test by creating a test combining different functions.
+ *
+ *
+ *
+ */
+
+public class EndtoEndTest extends TestCase {
     TicTacToe game = new TicTacToe();
 
 
-    //Focus integration test
-    public void testFunctional()
+    //Extended test
+    public void testEndtoEnd()
     {
         game.newBoard();
 

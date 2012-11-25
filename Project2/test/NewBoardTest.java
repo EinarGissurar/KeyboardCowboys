@@ -3,6 +3,14 @@ import junit.framework.Assert;
 import junit.framework.TestCase;
 import main.TicTacToe;
 
+/**
+ * Tests the function newBoard()
+ *
+ * Goes through each symbol in board[][] and compares it to a calculated value in char.
+ * So we
+ */
+
+
 public class NewBoardTest extends TestCase {
     TicTacToe game = new TicTacToe();
 

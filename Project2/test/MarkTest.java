@@ -2,12 +2,26 @@ import junit.framework.Assert;
 import junit.framework.TestCase;
 import main.TicTacToe;
 
+
+/**
+ * Tests getMark() and setMark().
+ *
+ * MarkTest creates the instance game of TicTacToe.
+ * TestGetMark hard-codes symbols into game's variable board and then uses assert to compare
+ * the value from getMark to the true value.
+ * TestSetMark uses setMark to insert symbols into game's board and then applies assert to
+ * compare the inserted values to the true values. It also checks to see if setMark overwrites
+ * (which it shouldn't) a already marked field. The test depends on the functions newBoard() and switchPlayer()
+ *
+ */
+
 public class MarkTest extends TestCase
 {
     TicTacToe game = new TicTacToe();
 
     public void testGetMark()
     {
+
         game.board[2][2] = 'O';   //Field 9
         game.board[1][1] = 'O';   //Field 5
         game.board[1][2] = 'X';   //Field 6
@@ -17,5 +31,27 @@ public class MarkTest extends TestCase
         Assert.assertEquals('O',game.getMark(5));
         Assert.assertEquals('X',game.getMark(6));
         Assert.assertEquals('X',game.getMark(1));
+    }
+
+    public void testSetMark()
+    {
+        game.newBoard();
+
+        game.setMark(5);
+        game.switchPlayer();
+        game.setMark(8);
+        game.switchPlayer();
+
+        //Test to see if it accidentally overwrites
+        game.setMark(5);
+        game.setMark(8);
+
+        Assert.assertEquals('X', game.board[1][1]);
+        Assert.assertEquals('O',game.board[2][1]);
+
+        game.printBoard();
+
+        game.newBoard();
+        game.printBoard();
     }
 }
