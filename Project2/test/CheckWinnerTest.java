@@ -11,6 +11,8 @@ public class CheckWinnerTest extends TestCase {
 
     public void testCheckWinner()
     {
+        game.newBoard();
+
         //Create a stub with result: DRAW
         game.board[0][0]='X';
         game.board[0][1]='O';

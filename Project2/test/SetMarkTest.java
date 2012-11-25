@@ -7,6 +7,8 @@ public class SetMarkTest extends TestCase {
     TicTacToe game = new TicTacToe();
     public void testSetMark()
     {
+        game.newBoard();
+
         game.setMark(5);
         game.switchPlayer();
         game.setMark(8);

@@ -83,6 +83,9 @@ public class TicTacToe {
         //0 : If it's a draw
         //-1 : If no winner yet, game still playing
 
+        //First check if the table is empty
+
+
 
         boolean draw = true;
         int winner;
@@ -225,7 +228,7 @@ public class TicTacToe {
                     System.out.println("The field is already marked");
             }
 
-
+            assert(board[0][0]!=0);     //Extra: making sure that we have called newBoard
             winner = checkWinner();
             switchPlayer();
         }

@@ -2,13 +2,15 @@ import junit.framework.Assert;
 import junit.framework.TestCase;
 import main.TicTacToe;
 
-public class PlayGameIntegrationTest extends TestCase {
+public class ExtendedUnitTest extends TestCase {
     TicTacToe game = new TicTacToe();
 
 
     //Focus integration test
     public void testFunctional()
     {
+        game.newBoard();
+
         //Player 1 WINS (X)
         game.setMark(1);
         game.setMark(2);
