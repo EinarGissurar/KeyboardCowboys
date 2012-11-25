@@ -27,7 +27,7 @@ public class TicTacToe {
     }
 
     /**
-     *  Fills out the board with char symbols of numbers of 1-9
+     *  Fills out board[3][3] with char symbols of numbers of 1-9
      *
      *  [1][2][3]
      *  [4][5][6]

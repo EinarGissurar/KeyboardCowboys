@@ -3,6 +3,14 @@ import junit.framework.Assert;
 import junit.framework.TestCase;
 import main.TicTacToe;
 
+/**
+ * Tests the function switchUser()
+ *
+ * It hard-codes the value for player1 to make sure its set to TRUE.
+ * Calls the function switchPlayer and uses assert to verify that the variables
+ * have switched from true to false and the other way around.
+ */
+
 public class SwitchUserTest extends TestCase {
 
     TicTacToe game = new TicTacToe();
