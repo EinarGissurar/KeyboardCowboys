@@ -165,7 +165,7 @@
 
 
     <!-- Run complete build process-->
-    <target name="build" depends="clean, initialize, checkstyle, javadoc, compile, jar"/>
+    <target name="build" depends="clean, initialize, checkstyle, javadoc, compile, jar, test"/>
 
 
 </project>
