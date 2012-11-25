@@ -6,9 +6,6 @@ package main;
  *
  */
 
-
-
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -27,7 +24,7 @@ public class TicTacToe {
     }
 
     /**
-     *  Fills out board[3][3] with char symbols of numbers of 1-9
+     *  Fills out board[3][3] with char symbols of numbers 1-9
      *
      *  [1][2][3]
      *  [4][5][6]
@@ -47,7 +44,7 @@ public class TicTacToe {
     /**Marks the selected field (1-9) with either a "X" for player 1 or "O" for player 2.
      *
      * @param field   The field which we want to mark
-     * @return        Returns a int; 1 if successfully marked the field
+     * @return        Returns an int; 1 the field was successfully marked
      *                -1 if the field is already marked
      */
     public int setMark(int field) {
@@ -66,7 +63,7 @@ public class TicTacToe {
         cfield = Character.forDigit(field, 10);
 
 
-        //We use modulus to map from field to matrix and check if it has already been marked
+        //Use modulus to map from int field to matrix(i,j) and check if it has already been marked
 
         if(field>6)
             if(board[2][(field-1) % 3]==cfield)
@@ -87,7 +84,7 @@ public class TicTacToe {
 
     /**
      *  Switches players from true to false and false to true.
-     *  One of the players is always true and one false
+     *  One of the players is always true and the other false
      */
 
     public void switchPlayer(){
@@ -104,7 +101,7 @@ public class TicTacToe {
         }
     }
 
-    /** Checks if the current board has a winning game or a draw.
+    /** Check if the current board has a winning game or a draw.
      *
      * For a winning game it simply goes over the eight possible winning games and checks if
      * the fields have the same mark. We also check one of those fields symbol to see who won.
@@ -125,8 +122,6 @@ public class TicTacToe {
         //-1 : If no winner yet, game still playing
 
         //First check if the table is empty
-
-
 
         boolean draw = true;
         int winner;
@@ -194,7 +189,7 @@ public class TicTacToe {
     /**
      * Gets userinput from user (keyboard)
      *
-     * @return  the user input if its a int
+     * @return  The user input if it's an int
      *          -1 if the input is not an integer
      */
 
@@ -209,7 +204,7 @@ public class TicTacToe {
     /**
      * Gets the symbol marked in field (only used for tests)
      *
-     * @param field     a int value from 1-9
+     * @param field     an int value from 1-9
      * @return          returns the symbol in the field
      */
 
@@ -254,7 +249,7 @@ public class TicTacToe {
     }
 
     /**
-     * Print out the current board, that is the values of the matrix board[][]
+     * Print out the current board, i.e. the values of the matrix board[][]
      */
 
     public void printBoard() {
@@ -267,9 +262,9 @@ public class TicTacToe {
         }
     }
 
-    /**
-     * The run function to play the game
-     * Fá Stinna til þess að lýsa þessu betur
+    /**Gameplay
+     * 
+	 * Player 1 has the first turn. Gameplay continues until a winner has been determined or a draw is reached.
      */
 
     public void playGame() {
@@ -278,20 +273,21 @@ public class TicTacToe {
 
         int winner = -1;
 
-
         newBoard();
+		assert(board[0][0]!=0);
 
         while (winner == -1) {
+		
+			//The game is still in progress
 
             System.out.println();
             printBoard();
-
             System.out.println();
 
             if (player1)
-                System.out.println("Player 1, it's your turn. (X)");
+                System.out.println("Player 1, it's your turn (X).");
             else
-                System.out.println("Player 2, it's your turn. (0)");
+                System.out.println("Player 2, it's your turn (O).");
 
             //Get user input
             boolean validInput = false;
@@ -306,11 +302,11 @@ public class TicTacToe {
                     System.out.println("The field is already marked");
             }
 
-            assert(board[0][0]!=0);     //Extra: making sure that we have called newBoard
             winner = checkWinner();
             switchPlayer();
         }
-        printBoard(); //The winning game
+        
+		printBoard(); //The winning game
 
         //Game has ended
         //winner = 0 if draw
