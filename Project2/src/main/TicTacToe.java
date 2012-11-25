@@ -1,8 +1,7 @@
 package main;
 
 /**
- * Tic Tac Toe and all of it's functions
- * Player 1 always has the symbol X and player 2 O
+ * The game TicTacToe, player1 - X and Player 2 - O
  *
  */
 

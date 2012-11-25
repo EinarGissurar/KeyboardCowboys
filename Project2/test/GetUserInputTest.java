@@ -4,9 +4,9 @@ import main.TicTacToe;
 import java.io.*;
 
 /**
- * Made to test GetUserInput
+ * Tests getUserInput()
  *
- *
+ * Dependent on function: does not depend on other functions from TicTacToe
  */
 
 public class GetUserInputTest extends TestCase
