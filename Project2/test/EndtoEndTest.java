@@ -3,9 +3,11 @@ import junit.framework.TestCase;
 import main.TicTacToe;
 
 /**
- *Here we create a Functional test by creating a test combining different functions.
+ *Tests several different functions together
  *
  *
+ *
+ * Dependent on function: newBoard, setMark, switchPlayer, checkWinner
  *
  */
 

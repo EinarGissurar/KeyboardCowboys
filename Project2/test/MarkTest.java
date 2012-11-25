@@ -9,10 +9,12 @@ import main.TicTacToe;
  * MarkTest creates the instance game of TicTacToe.
  * TestGetMark hard-codes symbols into game's variable board and then uses assert to compare
  * the value from getMark to the true value.
+ * Dependent on function: does not depend on other functions from TicTacToe
+ *
  * TestSetMark uses setMark to insert symbols into game's board and then applies assert to
  * compare the inserted values to the true values. It also checks to see if setMark overwrites
  * (which it shouldn't) a already marked field. The test depends on the functions newBoard() and switchPlayer()
- *
+ * Dependent on function: newBoard
  */
 
 public class MarkTest extends TestCase
@@ -38,20 +40,23 @@ public class MarkTest extends TestCase
         game.newBoard();
 
         game.setMark(5);
-        game.switchPlayer();
         game.setMark(8);
-        game.switchPlayer();
 
+        //Switch the players
+        game.player1=false;
+        game.player2=true;
+
+        game.setMark(9);
         //Test to see if it accidentally overwrites
         game.setMark(5);
         game.setMark(8);
 
         Assert.assertEquals('X', game.board[1][1]);
-        Assert.assertEquals('O',game.board[2][1]);
+        Assert.assertEquals('X',game.board[2][1]);
+        Assert.assertEquals('O',game.board[2][2]);
 
         game.printBoard();
 
-        game.newBoard();
-        game.printBoard();
+
     }
 }

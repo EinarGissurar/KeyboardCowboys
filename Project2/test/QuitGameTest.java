@@ -4,6 +4,7 @@ import main.TicTacToe;
 
 /**
  * Tests the function isQuitGame()
+ * Dependent on function: does not depend on other functions from TicTacToe
  */
 
 
