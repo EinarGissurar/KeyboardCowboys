@@ -7,7 +7,10 @@ import main.TicTacToe;
  * Tests the function newBoard()
  *
  * Goes through each symbol in board[][] and compares it to a calculated value in char.
- * So we
+ * So board[3][3] should look like this :
+ *  [1][2][3]
+ *  [4][5][6]
+ *  [7][8][9]
  */
 
 
