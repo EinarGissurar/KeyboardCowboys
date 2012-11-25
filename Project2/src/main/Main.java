@@ -2,6 +2,11 @@ package main;
 
 public class Main {
 
+
+    /**Main
+     * 
+	 * User can play a game of TicTacToe, see the rules of the game or quit the program.
+     */
     public static void main(String[] args) {
         TicTacToe game = new TicTacToe();
 

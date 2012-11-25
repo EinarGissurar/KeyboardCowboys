@@ -195,8 +195,10 @@ public class TicTacToe {
 
     public int getUserInput() {
         try {
+			//Scan the command line for user input
             return new Scanner(System.in).nextInt();
         } catch (InputMismatchException ex) {
+			//User input was not an integer
             return -1;
         }
     }
@@ -293,12 +295,16 @@ public class TicTacToe {
             boolean validInput = false;
             int userInput;
             while (!validInput) {
+				//Wait for input from user
                 userInput = getUserInput();
                 if (userInput == -1 || userInput < 1 || userInput > 9)
+					//User input is not valid
                     System.out.println("Please select a number between 1 and 9");
                 else if (setMark(userInput) == 1)
+					//User input is valid and a field has been marked
                     validInput = true;
                 else
+					//User input is not valid, the chosen field is already marked
                     System.out.println("The field is already marked");
             }
 
