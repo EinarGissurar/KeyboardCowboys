@@ -6,7 +6,7 @@ import main.TicTacToe;
 /**
  * Tests getMark() and setMark().
  *
- * MarkTest creates the instance game of TicTacToe.
+ * Creates the instance game of TicTacToe to be able to access its variables and functions.
  * TestGetMark hard-codes symbols into game's variable board and then uses assert to compare
  * the value from getMark to the true value.
  * Dependent on function: does not depend on other functions from TicTacToe

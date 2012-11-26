@@ -6,8 +6,8 @@ import main.TicTacToe;
 /**
  * Tests the Default Constructor for TicTacToe
  *
- * Creates and instance of TicTacToe and then uses assert to check if
- * the variables quitGame, player1 and player2 have the correct values
+ * Creates the instance game of TicTacToe to be able to access its variables and functions.
+ * It then uses assert to check if the variables quitGame, player1 and player2 have the correct values
  * Dependent on function: does not depend on other functions from TicTacToe
  */
 

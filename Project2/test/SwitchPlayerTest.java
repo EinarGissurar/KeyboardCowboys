@@ -6,9 +6,10 @@ import main.TicTacToe;
 /**
  * Tests the function switchUser()
  *
- * It hard-codes the value for player1 to make sure its set to TRUE.
+ * Creates the instance game of TicTacToe to be able to access its variables and functions.
+ * It hard-codes the value for player1 to make sure it's set to TRUE.
  * Calls the function switchPlayer and uses assert to verify that the variables
- * have switched from true to false and the other way around.
+ * have switched from true to false or the other way around.
  * Dependent on function:
  */
 

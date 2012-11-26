@@ -7,6 +7,7 @@ import main.TicTacToe;
 /**
  * Tests the function checkWinner()
  *
+ * Creates the instance game of TicTacToe to be able to access its variables and functions.
  * Creates stubs with different end results (player 1 wins, player 2 wins, draw)
  * and checks if the result from checkWinner corresponds to those results usinng junit - assert.
  * Dependent on function: does not depend on other functions from TicTacToe

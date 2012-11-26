@@ -3,6 +3,11 @@ package main;
 /**
  * The game TicTacToe, player1 - X and Player 2 - O
  *
+ * The class has 4 variables
+ * quitGame is a boolean variable indicating if we should exit the program
+ * board    is a matrix showing the current status of the board-game. A fresh table
+ *          contains the numbers 1-9 (that is after the function newBoard has been called)
+ * player1/player2  are a boolean variable indicating if it´s that players turn or not
  */
 
 import java.util.InputMismatchException;
@@ -114,11 +119,6 @@ public class TicTacToe {
      */
 
     public int checkWinner() {
-        //Returns:
-        //1 :  If player 1 won
-        //2 : If player 2 won
-        //0 : If it's a draw
-        //-1 : If no winner yet, game still playing
 
         //First check if the table is empty
 

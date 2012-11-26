@@ -6,6 +6,7 @@ import main.TicTacToe;
 /**
  * Tests the function newBoard()
  *
+ * Creates the instance game of TicTacToe to be able to access its variables and functions.
  * Goes through each symbol in board[][] and compares it to a calculated value in char.
  * So board[3][3] should look like this :
  *  [1][2][3]
