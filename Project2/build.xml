@@ -138,7 +138,7 @@
                 <path refid="junit.classpath"/>
                 <path refid="emma.classpath" />
             </classpath>
-            <jvmarg value="-Demma.coverage.out.file=${coverage.dir}/coverage.emma" />
+            <jvmarg value="-Demma.coverage.out.file=Project2/${coverage.dir}/coverage.emma" />
             <jvmarg value="-Demma.coverage.out.merge=true" />
 
             <batchtest fork="yes">
@@ -152,8 +152,8 @@
                     <include name="*.emma" />
                 </fileset>
 
-                <txt outfile="${coverage.dir}/coverage.txt" />
-                <html outfile="${coverage.dir}/coverage.html" />
+                <txt outfile="Project2/${coverage.dir}/coverage.txt" />
+                <html outfile="Project2/${coverage.dir}/coverage.html" />
             </report>
         </emma>
     </target>
