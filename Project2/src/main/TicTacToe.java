@@ -310,8 +310,8 @@ public class TicTacToe {
             winner = checkWinner();
             switchPlayer();
         }
-        
-		printBoard(); //The winning game
+
+        printBoard(); //The winning game
 
         //Game has ended
         //winner = 0 if draw

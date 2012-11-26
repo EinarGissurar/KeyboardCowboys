@@ -14,9 +14,9 @@
     <property name="instr.classes.dir" value="${build.dir}/instr-classes" /> <!-- InstrumentClass directory -->
     <property name="doc.dir"        value="doc"/>               <!-- Documentation, code coverage and inspection -->
     <property name="coverage.dir"   value="${doc.dir}/coverage"/> <!-- Coverage directory -->
-    <property name="checkstyle.dir" value="${doc.dir}/checkstyle"/>
-    <property name="javadoc.dir"    value="${doc.dir}/javadoc"/>
-    <property name="run.file" value="run.bat" />
+    <property name="checkstyle.dir" value="${doc.dir}/checkstyle"/> <!-- Checkstyle directory -->
+    <property name="javadoc.dir"    value="${doc.dir}/javadoc"/> <!-- Javadoc directory -->
+    <property name="run.file" value="TicTacToe.bat" /> <!-- Executable directory -->
 
     <!-- Classpaths -->
     <path id="compile.classpath">
@@ -54,6 +54,7 @@
     <target name="clean">
         <delete dir="${build.dir}"/>
         <delete dir="${doc.dir}"/>
+        <delete file="${run.file}"/>
     </target>
 
     <!-- Initialize build -->
@@ -78,6 +79,7 @@
         </checkstyle>
     </target>
 
+    <!-- Javadoc documentation -->
     <target name="javadoc" depends="initialize"> 
         <mkdir dir="${javadoc.dir}"/> 
         <javadoc destdir="${javadoc.dir}" windowtitle="TicTacToe documentation">  
@@ -165,7 +167,7 @@
 
 
     <!-- Run complete build process-->
-    <target name="build" depends="clean, initialize, checkstyle, javadoc, compile, jar, test"/>
+    <target name="build" depends="clean, initialize, javadoc, compile, jar, test"/>
 
 
 </project>
