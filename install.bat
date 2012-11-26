@@ -1,13 +1,11 @@
 @ECHO OFF
 
-:: Hugbúnaðarfræði
+:: Hugbï¿½naï¿½arfrï¿½ï¿½i
 :: 2012 (c) Keyboard Cowboys
 
 
 ECHO The install execution is under the assumption that
-ECHO JDK 1.6 or higher is installed.
-ECHO The directory of ANT should be placed in the same
-ECHO directory as the install file.
+ECHO JDK 1.6 or higher is installed along with Ant version 1.8.2
 
 pause
 
