@@ -16,7 +16,7 @@
     <property name="coverage.dir"   value="${doc.dir}/coverage"/> <!-- Coverage directory -->
     <property name="checkstyle.dir" value="${doc.dir}/checkstyle"/> <!-- Checkstyle directory -->
     <property name="javadoc.dir"    value="${doc.dir}/javadoc"/> <!-- Javadoc directory -->
-    <property name="run.file" value="TicTacToe.bat" /> <!-- Executable directory -->
+    <property name="run.file" value="TicTacToe.bat" /> <!-- Executable bat file -->
 
     <!-- Classpaths -->
     <path id="compile.classpath">
